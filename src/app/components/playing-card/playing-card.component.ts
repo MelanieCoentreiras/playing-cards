@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Monster } from 'src/app/models/monster.model';
 
 @Component({
   selector: 'app-playing-card',
@@ -7,11 +8,28 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./playing-card.component.css'],
 })
 export class PlayingCardComponent {
-  // je définis les propriétés de mon composant
-  @Input() name: string = 'My monster';
-  @Input() hp: number = 40;
-  @Input() figureCaption: string = 'N°001 Monster';
-  @Input() attackName: string = 'Geo Impact';
-  @Input() attackStrength: number = 60;
-  @Input() attackDescription: string = 'This is a long description';
+  // la variable va s'appeler monster
+  // va être de type Monster (la classe qu'on a créée), que j'importe
+  // et je l'assigne à un nouvel objet Monster (new Monster)
+  @Input({
+    alias: 'my-monster',
+    transform: (value: Monster) => {
+      value.hp = value.hp / 2;
+      return value;
+    },
+  })
+  monster: Monster = new Monster();
 }
+
+/* // Version InputSignal
+export class PlayingCardComponent {
+  @Input({
+    alias: 'my-monster',
+    transform: (value: Monster) => {
+      value.hp = value.hp / 2;
+      return value;
+    },
+  })
+  monster: InputSignal<Monster> = Input(new Monster());
+}
+ */
