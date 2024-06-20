@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+// Importez d'autres modules si nécessaire
 
 @NgModule({
   declarations: [
-    AppComponent
+    // Ne déclarez pas AppComponent ici
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    // Importez d'autres modules si nécessaire
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [], // Gardez cette liste vide
 })
-export class AppModule { }
+export class AppModule {}
